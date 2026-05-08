@@ -64,12 +64,11 @@ Dự án thực hiện thử nghiệm trên 4 cấu hình chính:
 
 #### 1. So sánh các chỉ số NLP & VQA (Thang điểm 0-1)
 Biểu đồ này cho thấy sự vượt trội của các phương pháp tiền huấn luyện (Zero-shot, SFT) so với kiến trúc rời (Transformer/LSTM) trên các thang đo truyền thống.
-![So sánh chỉ số NLP & VQA](./metric.png) *(Thay bằng link ảnh biểu đồ 1 của bạn)*
+![So sánh chỉ số NLP & VQA](./metric.png)
 
 #### 2. Điểm số từ LLM Judge (Độ tự nhiên & Chính xác)
 Đánh giá từ mô hình ngôn ngữ lớn (LLM) cho thấy các phiên bản Finetuned (SFT/DPO) có độ tự nhiên và khả năng trả lời sát với thực tế nhất, vượt xa ngưỡng trung bình.
-![Điểm số LLM Judge](./llmasjudge.png) *(Thay bằng link ảnh biểu đồ 2 của bạn)*
-
+![Điểm số LLM Judge](./llmasjudge.png)
 ---
 
 ## 🔍 Phân tích & Đánh giá
