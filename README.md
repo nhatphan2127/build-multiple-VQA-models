@@ -1,4 +1,35 @@
 
+## 🚀 Hướng dẫn cài đặt và Sử dụng
+
+### 1. Cài đặt môi trường
+Đảm bảo đã cài đặt Python. Cài đặt các thư viện cần thiết bằng lệnh:
+
+```bash
+pip install -r requirements.txt
+```
+
+> **⚠️ Lưu ý về phiên bản PyTorch:** 
+> Nếu sử dụng GPU NVIDIA, hãy cài đặt phiên bản PyTorch hỗ trợ CUDA để đạt hiệu suất tốt nhất. Ví dụ với CUDA 11.8:
+> `pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118`
+
+### 2. Chạy Demo (Gradio App)
+Dự án cung cấp giao diện trực quan để thử nghiệm mô hình:
+
+```bash
+python gradio_app.py
+```
+Sau khi chạy, truy cập đường dẫn `http://127.0.0.1:7860` trên trình duyệt.
+
+---
+## Mô hình và dữ liệu
+
+| Loại | Tên Model / Dataset | Đường dẫn (Link) |
+| :--- | :--- | :--- |
+| **Model** | phobert + resnet + lstm/transformer | [nhatphan2127/phoBert-resnet-transformer-decoder](https://huggingface.co/nhatphan2127/phoBert-resnet-transformer-decoder) |
+| **Model** | finetuned-rlhf-qwen | [nhatphan2127/finetuned-rlhf-qwen](https://huggingface.co/nhatphan2127/finetuned-rlhf-qwen) |
+| **Model** | finetuned-qwen2-vl | [nhatphan2127/finetuned-qwen2-vl](https://huggingface.co/nhatphan2127/finetuned-qwen2-vl) |
+| **Dataset** | food-VQA-dataset | [nhatphan2127/food-VQA-dataset](https://huggingface.co/datasets/nhatphan2127/food-VQA-dataset) |
+---
 
 # Vietnamese Visual Question Answering (VQA) for Specific Domain
 
@@ -15,28 +46,6 @@ Hệ thống nhận đầu vào là **Hình ảnh** và **Câu hỏi tiếng Vi�
 
 ---
 
-## 🚀 Hướng dẫn cài đặt và Sử dụng
-
-### 1. Cài đặt môi trường
-Đảm bảo bạn đã cài đặt Python. Cài đặt các thư viện cần thiết bằng lệnh:
-
-```bash
-pip install -r requirements.txt
-```
-
-> **⚠️ Lưu ý về phiên bản PyTorch:** 
-> Nếu bạn sử dụng GPU NVIDIA, hãy cài đặt phiên bản PyTorch hỗ trợ CUDA để đạt hiệu suất tốt nhất. Ví dụ với CUDA 11.8:
-> `pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118`
-
-### 2. Chạy Demo (Gradio App)
-Dự án cung cấp giao diện trực quan để thử nghiệm mô hình:
-
-```bash
-python gradio_app.py
-```
-Sau khi chạy, truy cập đường dẫn `http://127.0.0.1:7860` trên trình duyệt.
-
----
 
 ## 🏗️ Kiến trúc Mô hình
 
