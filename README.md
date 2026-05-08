@@ -8,7 +8,7 @@ Dự án xây dựng hệ thống Hỏi đáp trên Ảnh (VQA) dành riêng cho
 Hệ thống nhận đầu vào là **Hình ảnh** và **Câu hỏi tiếng Việt**, sau đó sinh ra **Câu trả lời** tương ứng. Dự án thực hiện so sánh đối chứng giữa các kiến trúc rời rạc (Modular) và các mô hình đa phương thức tiền huấn luyện (Multimodal Pretrained), đồng thời áp dụng các kỹ thuật học tăng cường (RLHF/DPO) để tối ưu hóa câu trả lời.
 
 ### Các đặc điểm chính:
-- **Dữ liệu:** > 3600 (> 11000) bộ câu hỏi (ảnh, câu hỏi, câu trả lời) với miền dữ liệu chuyên biệt.
+- **Dữ liệu:** > 3600 (> 11000 tang cuong) bộ câu hỏi (ảnh, câu hỏi, câu trả lời) với miền dữ liệu chuyên biệt.
 - **Kiến trúc:** So sánh giữa LSTM Decoder, Transformer Decoder và Fine-tune mô hình lớn (BLIP/LLaVA).
 - **Học tăng cường:** Sử dụng phương pháp DPO (Direct Preference Optimization) để cải thiện chất lượng phản hồi.
 - **Đánh giá đa chiều:** Kết hợp các chỉ số truyền thống (BLEU, ROUGE) và hiện đại (BERTScore, LLM-as-a-judge).
