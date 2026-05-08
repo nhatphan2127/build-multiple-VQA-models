@@ -7,6 +7,9 @@ import pandas as pd
 
 import os
 
+OUTPUT_DIR = './multimodal/results'
+MODEL_DIR = './multimodal/checkpoint/qwen2-vl-lora'
+DATASET_FOR_MODELS = "./dataset_for_models"
 def collate_fn(examples, processor):
     # 1. Lấy tin nhắn và xử lý hình ảnh/video
     messages = [example["messages"] for example in examples]
@@ -66,7 +69,6 @@ def collate_fn(examples, processor):
 
 def train_lora():
     model_id = "Qwen/Qwen2-VL-2B-Instruct"
-    output_dir = "./multimodal/checkpoint/qwen2-vl-lora"
 
     # BitsAndBytes Config
     bnb_config = BitsAndBytesConfig(
@@ -103,14 +105,14 @@ def train_lora():
 
     # Dataset (Giả sử bạn đã có VQADataset)
     from multimodal.dataset import VQADataset
-    train_dataset = VQADataset("multimodal/checkpoint/train.json", "data")
-    val_dataset = VQADataset("multimodal/checkpoint/val.json", "data")
+    train_dataset = VQADataset(f"{DATASET_FOR_MODELS}/train.json", "data")
+    val_dataset = VQADataset(f"{DATASET_FOR_MODELS}/val.json", "data")
     
     training_args = TrainingArguments(
-        output_dir=output_dir,
+        output_dir=MODEL_DIR,
         per_device_train_batch_size=4,   # giảm từ 16 → 1
         gradient_accumulation_steps=8,  # tăng để effective batch = 32
-        hub_model_id="nhatphan2127/finetuned-gwen", # Thay bằng "username/ten-repo" của bạn
+        hub_model_id="nhatphan2127/finetuned-qwen-vl", # Thay bằng "username/ten-repo" của bạn
         hub_strategy="every_save",
         push_to_hub=True,
         learning_rate=1e-4,
@@ -169,12 +171,12 @@ def train_lora():
     plt.grid(True)
     
     # Lưu đồ thị
-    plt.savefig(os.path.join(output_dir, "loss_chart.png"))
+    plt.savefig(os.path.join(OUTPUT_DIR, "loss_chart.png"))
     plt.show()
 
     # Lưu Model
-    trainer.save_model(output_dir)
-    processor.save_pretrained(output_dir)
+    trainer.save_model(MODEL_DIR)
+    processor.save_pretrained(MODEL_DIR)
 
 if __name__ == "__main__":
     train_lora()

@@ -1,6 +1,6 @@
 import json
-from torch.utils.data import Dataset
-from prompts import (
+from datasets import Dataset
+from utils.prompts import (
     SYSTEM_PROMPT_VI
 )
 

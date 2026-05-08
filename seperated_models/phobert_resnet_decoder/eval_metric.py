@@ -9,14 +9,12 @@ from torch.utils.data import DataLoader
 from transformers import AutoTokenizer
 from utils.vocab import Vocab
 
-
-DATA_PATH = "./data/data.json"
 IMG_ROOT = "./data/"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-EPOCHS = 15
 BATCH_SIZE = 64
-LR = 1e-4
 MODEL_DIR = "seperated_models/phobert_resnet_decoder/checkpoint"
+OUTPUT_DIR = "seperated_models/phobert_resnet_decoder/results"
+DATASET_FOR_MODELS = "/dataset_for_models"
 
 def evaluate_test(model, tokenizer:AutoTokenizer, test_loader, vocab, decoder_type="transformer"):
     model.eval()
@@ -65,7 +63,7 @@ def evaluate_test(model, tokenizer:AutoTokenizer, test_loader, vocab, decoder_ty
         print(f"{k}: {v:.4f}")
     
     # Lưu kết quả chi tiết vào file json
-    with open(os.path.join(MODEL_DIR, f"test_metrics_{decoder_type}.json"), 'w', encoding='utf-8') as f:
+    with open(os.path.join(OUTPUT_DIR, f"test_metrics_{decoder_type}.json"), 'w', encoding='utf-8') as f:
         json.dump({
             "summary": metrics_results,
             "details": results_detail
@@ -75,18 +73,17 @@ def evaluate_test(model, tokenizer:AutoTokenizer, test_loader, vocab, decoder_ty
 
 if __name__ == "__main__":
 
-
-    for decoder_type in ['lstm']:
+    for decoder_type in ['transformer', 'lstm']:
             # Load best before test
-        with open(f'seperated_models/phobert_resnet_decoder/checkpoint/config_{decoder_type}.json', 'r', encoding='utf-8') as file:
+        with open(f'{MODEL_DIR}/config_{decoder_type}.json', 'r', encoding='utf-8') as file:
             config = json.loads(file.read())
         model = VQAModel(vocab_size=config['vocab_size'], d_model=config['d_model'], decoder_type=config['decoder_type']).to(DEVICE)
         
-        with open('seperated_models/phobert_resnet_decoder/checkpoint/test.json', 'r', encoding='utf-8') as file:
+        with open(f'./{DATASET_FOR_MODELS}/test.json', 'r', encoding='utf-8') as file:
             test = json.loads(file.read())
-            vocab = Vocab.load('./seperated_models/phobert_resnet_decoder/checkpoint/vocab.json')
+            vocab = Vocab.load(f'./{MODEL_DIR}/vocab.json')
             phobert_tokenizer = AutoTokenizer.from_pretrained("vinai/phobert-base")
             test_dataset = VQADataset(test, phobert_tokenizer, vocab, img_root='./data/')
-            test_loader = DataLoader(test_dataset, batch_size=64)
+            test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE)
         model.load_state_dict(torch.load(os.path.join(MODEL_DIR, f"best_model_{decoder_type}.pth")))
         evaluate_test(model, phobert_tokenizer, test_loader, vocab, decoder_type=decoder_type)

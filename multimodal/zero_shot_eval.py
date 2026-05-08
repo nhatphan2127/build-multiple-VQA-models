@@ -9,6 +9,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.metrics import calculate_metrics
 
+OUTPUT_DIR = 'multimodal/results'
 def zero_shot_eval():
     model_id = "Qwen/Qwen2-VL-2B-Instruct"
     

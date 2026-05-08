@@ -20,7 +20,7 @@ from tqdm import tqdm
 
 # Settings
 DATA_PATH = "./data/data.json"
-TEST_PATH = "./data/test.json"
+TEST_PATH = "/dataset_for_models/test.json"
 
 IMG_ROOT = "./data/"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -28,15 +28,13 @@ EPOCHS = 15
 BATCH_SIZE = 64
 LR = 1e-4
 MODEL_DIR = "seperated_models/phobert_resnet_decoder/checkpoint"
+DATASET_FOR_MODELS = "/dataset_for_models"
+OUTPUT_DIR = 'seperated_models/phobert_resnet_decoder/results'
 os.makedirs(MODEL_DIR, exist_ok=True)
 
 def train_model(force_split=False, decoder_type="transformer"):
-    # Split/Load Data
-    train_data, val_data = split_data(DATA_PATH, MODEL_DIR, force_split=force_split)
-    with open(TEST_PATH, 'r', encoding='utf-8') as file:
-        test_data = json.loads(file.read())
+    train_data, val_data = split_data(DATASET_FOR_MODELS, MODEL_DIR, force_split=force_split)
     
-    # Build/Load Vocab for answers
     all_answers = [item['answer'] for item in train_data] # Build vocab only from train_data ideally
     answer_vocab = Vocab()
     answer_vocab.build_vocab(all_answers)
@@ -70,12 +68,10 @@ def train_model(force_split=False, decoder_type="transformer"):
     # Datasets
     train_ds = VQADataset(train_data, phobert_tokenizer, answer_vocab, img_root=IMG_ROOT)
     val_ds = VQADataset(val_data, phobert_tokenizer, answer_vocab, img_root=IMG_ROOT)
-    test_ds = VQADataset(test_data, phobert_tokenizer, answer_vocab, img_root=IMG_ROOT)
 
     # Dataloaders
     train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True)
     val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE)
-    test_loader = DataLoader(test_ds, batch_size=BATCH_SIZE)
 
     # Model
     model = VQAModel(vocab_size=config['vocab_size'], d_model=config['d_model'], decoder_type=config['decoder_type']).to(DEVICE)
@@ -152,14 +148,14 @@ def train_model(force_split=False, decoder_type="transformer"):
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
     plt.legend()
-    plt.savefig(os.path.join(MODEL_DIR, f"loss_graph_{decoder_type}.png"))
+    plt.savefig(os.path.join(OUTPUT_DIR, f"loss_graph_{decoder_type}.png"))
     
-    return model, test_loader, answer_vocab
+    return model, answer_vocab
 
 
 
 if __name__ == "__main__":
     for decoder_type in ['transformer', 'lstm']:
-        model, test_loader, vocab = train_model(force_split=False, decoder_type=decoder_type)
+        model, vocab = train_model(force_split=False, decoder_type=decoder_type)
 
         

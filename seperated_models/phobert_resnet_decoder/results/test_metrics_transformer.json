@@ -1,0 +1,67 @@
+{
+    "per_type": {
+        "so_luong": {
+            "avg_bleu": 0.10224131272799779,
+            "avg_rougeL": 0.4496659210696658,
+            "avg_bert_score": 0.8038363855119814,
+            "avg_vqa_accuracy": 0.0,
+            "avg_llm_judge": 4.1217616580310885
+        },
+        "mo_ta": {
+            "avg_bleu": 0.06679977597799396,
+            "avg_rougeL": 0.362084910686149,
+            "avg_bert_score": 0.7624452013969422,
+            "avg_vqa_accuracy": 0.0,
+            "avg_llm_judge": 3.332
+        },
+        "mau_sac": {
+            "avg_bleu": 0.13313456556430767,
+            "avg_rougeL": 0.4904978234073308,
+            "avg_bert_score": 0.8100275593603442,
+            "avg_vqa_accuracy": 0.0,
+            "avg_llm_judge": 4.57185628742515
+        },
+        "vi_tri": {
+            "avg_bleu": 0.09346833410342481,
+            "avg_rougeL": 0.43167092353984937,
+            "avg_bert_score": 0.8028207712703281,
+            "avg_vqa_accuracy": 0.0,
+            "avg_llm_judge": 3.202777777777778
+        },
+        "nhan_dang": {
+            "avg_bleu": 0.15424845858178077,
+            "avg_rougeL": 0.5166491478618445,
+            "avg_bert_score": 0.8059967215528193,
+            "avg_vqa_accuracy": 0.0,
+            "avg_llm_judge": 6.005154639175258
+        },
+        "mô tả": {
+            "avg_bleu": 0.07176280663483273,
+            "avg_rougeL": 0.3493059942791082,
+            "avg_bert_score": 0.7562415965816431,
+            "avg_vqa_accuracy": 0.0,
+            "avg_llm_judge": 3.473684210526316
+        },
+        "yes_no": {
+            "avg_bleu": 0.08747690245576852,
+            "avg_rougeL": 0.44681606466657325,
+            "avg_bert_score": 0.774418558393206,
+            "avg_vqa_accuracy": 0.0,
+            "avg_llm_judge": 6.5
+        },
+        "yes/no": {
+            "avg_bleu": 0.134839038673793,
+            "avg_rougeL": 0.4720917125851676,
+            "avg_bert_score": 0.7828378266061259,
+            "avg_vqa_accuracy": 0.0,
+            "avg_llm_judge": 5.152046783625731
+        }
+    },
+    "overall": {
+        "avg_bleu": 0.11393020084673838,
+        "avg_rougeL": 0.4530277234013751,
+        "avg_bert_score": 0.7941913505665937,
+        "avg_vqa_accuracy": 0.0,
+        "avg_llm_judge": 4.438692098092643
+    }
+}

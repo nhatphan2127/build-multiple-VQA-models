@@ -14,7 +14,7 @@ class Vocab:
         self.idx2word = {0: pad_token, 1: unk_token, 2: start_token, 3: end_token}
         self.vocab_size = 4
 
-    def build_vocab(self, texts, min_freq=1):
+    def build_vocab(self, texts, min_freq=0):
         counter = Counter()
         for text in texts:
             if isinstance(text, str):
