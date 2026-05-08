@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+venv/
+.env
+
+# HuggingFace model
+*.bin
+*.safetensors
+checkpoint-*/
+
+# Dataset
+data
+raw
+
+# VSCode
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Data
+data/
+raw/
+
+# Checkpoints
+multimodal/checkpoint1/
+
+seperated_models/phobert_resnet_decoder/checkpoint/
+
+seperated_models/phobert_resnet_decoder/checkpoint1/
+
+enhance_model/rlhf/dpo/checkpoints/
+
+.gradio
+
+*.tfevents.*
