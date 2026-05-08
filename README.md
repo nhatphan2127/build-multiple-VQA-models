@@ -1,6 +1,4 @@
-Dưới đây là nội dung tệp **README.md** được thiết kế chuyên nghiệp, đầy đủ cho dự án VQA tiếng Việt của bạn dựa trên các yêu cầu và kết quả bạn đã cung cấp.
 
----
 
 # Vietnamese Visual Question Answering (VQA) for Specific Domain
 
@@ -66,11 +64,11 @@ Dự án thực hiện thử nghiệm trên 4 cấu hình chính:
 
 #### 1. So sánh các chỉ số NLP & VQA (Thang điểm 0-1)
 Biểu đồ này cho thấy sự vượt trội của các phương pháp tiền huấn luyện (Zero-shot, SFT) so với kiến trúc rời (Transformer/LSTM) trên các thang đo truyền thống.
-![So sánh chỉ số NLP & VQA](https://drive.google.com/file/d/19guncQ3ad6LiyfjP-b7W_gXZHiNngzDU/view?usp=sharing) *(Thay bằng link ảnh biểu đồ 1 của bạn)*
+![So sánh chỉ số NLP & VQA](./metric.png) *(Thay bằng link ảnh biểu đồ 1 của bạn)*
 
 #### 2. Điểm số từ LLM Judge (Độ tự nhiên & Chính xác)
 Đánh giá từ mô hình ngôn ngữ lớn (LLM) cho thấy các phiên bản Finetuned (SFT/DPO) có độ tự nhiên và khả năng trả lời sát với thực tế nhất, vượt xa ngưỡng trung bình.
-![Điểm số LLM Judge](https://drive.google.com/file/d/199XRMM1X4sK6nJdm8KblUCwfTsJqa51f/view?usp=sharing) *(Thay bằng link ảnh biểu đồ 2 của bạn)*
+![Điểm số LLM Judge](./llmasjudge.png) *(Thay bằng link ảnh biểu đồ 2 của bạn)*
 
 ---
 
