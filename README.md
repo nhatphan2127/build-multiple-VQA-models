@@ -17,6 +17,10 @@ python gradio_app.py
 ```
 Sau khi chạy, truy cập đường dẫn `http://127.0.0.1:7860` trên trình duyệt.
 
+### 3. Demo video
+
+https://youtu.be/_sH-dBtAYXE
+
 ---
 ## Mô hình và dữ liệu
 
