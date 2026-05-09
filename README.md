@@ -5,12 +5,9 @@
 Đảm bảo đã cài đặt Python. Cài đặt các thư viện cần thiết bằng lệnh:
 
 ```bash
-pip install -r requirements.txt
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118    ### chọn phiên bản phù hợp
+pip install transformers gradio Pillow qwen-vl-utils accelerate
 ```
-
-> **⚠️ Lưu ý về phiên bản PyTorch:** 
-> Nếu sử dụng GPU NVIDIA, hãy cài đặt phiên bản PyTorch hỗ trợ CUDA để đạt hiệu suất tốt nhất. Ví dụ với CUDA 11.8:
-> `pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118`
 
 ### 2. Chạy Demo (Gradio App)
 Dự án cung cấp giao diện trực quan để thử nghiệm mô hình:
