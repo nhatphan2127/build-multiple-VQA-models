@@ -6,7 +6,7 @@
 
 ```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118    ### chọn phiên bản phù hợp
-pip install transformers gradio Pillow qwen-vl-utils accelerate
+pip install transformers gradio Pillow qwen-vl-utils accelerate underthesea 
 ```
 
 ### 2. Chạy Demo (Gradio App)
