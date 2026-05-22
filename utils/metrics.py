@@ -8,7 +8,7 @@ from rouge_score import rouge_scorer
 from bert_score import scorer as bert_scorer
 from underthesea import word_tokenize  # Thư viện tách từ tiếng Việt
 
-API_KEY = 'AIzaSyDpRpHhQjAFIKYGJaySyJwD7LALlmgWpUQ'
+API_KEY = ''
 
 def preprocess_vi(text):
     """
